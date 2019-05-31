@@ -26,12 +26,6 @@ public class WordsCounter {
 		String sentence = readFileFromPath( filePath );	
 		sentence = sentence.toUpperCase().replaceAll("[-\"|\"$:?,\t\n\r()\\s+]"," ");
 		
-		
-		//replacing the last period on words.
-		
-		System.out.println(replaceLastChar(sentence, ".", ""));
-		
-		
 		String[] sentenceArray = sentence.split(" ");
 		Map<String, Integer> myMap = new HashMap<String, Integer>();
 		String myWord = null;
@@ -39,7 +33,7 @@ public class WordsCounter {
 		// putting counters into the Map values and use words as keys.
 		for (int i = 0; i < sentenceArray.length; i++) {
 			myWord = sentenceArray[i];
-			myWord = replaceLastChar(myWord, ".", "");
+			myWord = replaceLastChar(myWord, ".", "");  // Removing a period at the end of each word 
 			myMap.put(myWord, returnCounter(sentence, myWord));
 		}
 		
@@ -73,14 +67,14 @@ public class WordsCounter {
         return content;
     }
    
-    // Counting the occurance of the word
+    // Counting the Occurance of the word
 	static int returnCounter(String paragraph, String word) {
 		int count = 0;
 		String myWord = null;
 		String[] myArray = paragraph.split(" ");
 		for (int i = 0; i < myArray.length; i++) {
 			myWord = myArray[i];
-			myWord = replaceLastChar(myWord, ".", "");
+			myWord = replaceLastChar(myWord, ".", ""); //Removing a period at the end of each word
 			if(word.equals(myWord)) {
 				count++;
 			}
